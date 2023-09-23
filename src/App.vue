@@ -8,8 +8,7 @@
 import ProgressBar from "./components/ProgressBar.vue";
 import {ref, onMounted} from "vue";
 const progress = ref(90);
-function addProgress() {!
-  console.log(progress.value)
+function addProgress() {
   progress.value++
 }
 

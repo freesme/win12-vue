@@ -35,10 +35,9 @@ const {title, info, width, progress, manual, loadTime, backColor, activeColor, o
 const progressInner = ref(0);
 
 function loadProgress() {
-  console.log("manual:", !manual.value)
   progressInner.value = progress.value
   if (!manual.value) {
-    let timeout = loadTime.value / (100 - progress.value++)
+    let timeout = loadTime.value / (100 - progress.value)
     const interval = setInterval(() => {
       progressInner.value++
       if (progressInner.value >= 100) {
@@ -52,20 +51,14 @@ onMounted(() => {
   loadProgress()
 })
 
-watch(progressInner, (newVal) => {
-  console.log("progress change", progress.value)
-  if (newVal === 100) {
-    props.onProgressComplete()
-  }
-})
-
 watch(progress, (newVal) => {
-  console.log("progress change", progress.value)
   if (newVal < 100) {
     progressInner.value = progress.value
   } else if (newVal === 100) {
     progressInner.value = progress.value
     props.onProgressComplete()
+  } else if (newVal > 100) {
+    progressInner.value = 100
   }
 })
 
