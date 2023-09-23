@@ -87,3 +87,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@font-face {
+  font-family: 'doc';
+  src: url('./assets/fonts/dos.ttf');
+}
+

@@ -1,30 +1,20 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <HelloWorld msg="Vite + Vue" />
+  <ProgressBar :progress="progress" :load-time=1000 backColor="#C81D1DFF" :manual="false"/>
+  <button style="width: 100px" @click=addProgress>STEP</button>
 </template>
 
+
+<script setup>
+import ProgressBar from "./components/ProgressBar.vue";
+import {ref, onMounted} from "vue";
+const progress = ref(90);
+function addProgress() {!
+  console.log(progress.value)
+  progress.value++
+}
+
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
+
 </style>
