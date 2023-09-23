@@ -51,15 +51,21 @@ onMounted(() => {
   loadProgress()
 })
 
-watch(progress, (newVal) => {
-  if (newVal < 100) {
-    progressInner.value = progress.value
-  } else if (newVal === 100) {
-    progressInner.value = progress.value
-    props.onProgressComplete()
-  } else if (newVal > 100) {
-    progressInner.value = 100
+watch(progressInner, (newVal) => {
+  console.log("inner:", newVal)
+  if (newVal === 100) {
+    // function maybe Blocking page rendering
+    setTimeout(() => props.onProgressComplete()
+        .then(result => {
+          console.log(result)
+        }), 500)
   }
+})
+
+
+watch(progress, (newVal) => {
+  console.log(newVal)
+  progressInner.value = newVal < 100 ? progress.value : 100
 })
 
 
