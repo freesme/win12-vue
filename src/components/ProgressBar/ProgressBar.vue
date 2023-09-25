@@ -13,16 +13,18 @@
 
 <script setup>
 import {ref, toRefs, watch, onMounted} from 'vue';
+import {makeNumberProp, makeStringProp, truthProp} from "../../utils/props";
+
 
 const props = defineProps({
-  title: {type: String, default: 'Starting'},
-  info: {type: String, default: 'Press F2 or touch screen to enter SETUP'},
-  width: {type: Number, default: 500},              // 进度条长度
-  progress: {type: Number, default: 0},             // 初始进度%（百分比）
-  manual: {type: Boolean, default: true},           // 手动调用
-  loadTime: {type: Number, default: 1000},          // 加载时长
-  backColor: {type: String, default: '#acabac'},    // 背景颜色
-  activeColor: {type: String, default: '#2f2e2e'},  // 活动颜色
+  title: makeStringProp('Starting'),
+  info: makeStringProp('Press F2 or touch screen to enter SETUP'),
+  width: makeNumberProp(500),              // 进度条长度
+  progress: makeNumberProp(0),             // 初始进度%（百分比）
+  manual: truthProp,           // 手动调用
+  loadTime: makeNumberProp(1000),           // 加载时长
+  backColor: makeStringProp('#acabac'),    // 背景颜色
+  activeColor: makeStringProp('#2f2e2e'),  // 活动颜色
 
   onProgressComplete: {                             // 回调函数属性
     type: Function, default: () => {
