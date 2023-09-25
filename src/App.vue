@@ -5,7 +5,7 @@
 
 
 <script setup>
-import ProgressBar from "./components/ProgressBar.vue";
+import ProgressBar from "./components/ProgressBar/ProgressBar.vue";
 import {ref, onMounted} from "vue";
 const progress = ref(90);
 function addProgress() {
